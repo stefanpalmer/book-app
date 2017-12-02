@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-novels',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./novels.component.css']
 })
 export class NovelsComponent implements OnInit {
+  @ViewChild('form') novelsForm: NgForm;
 
   constructor() { }
 
