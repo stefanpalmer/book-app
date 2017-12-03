@@ -4,5 +4,5 @@ export class Book {
   constructor (public title: string, public author: string,
     public publisher: string, public year: number, public pages: number,
     public series: string, public seriesnum: number, public stories: Story[],
-    public isbn: number, public review: string) {}
+    public isbn: string, public review: string) {}
 }
