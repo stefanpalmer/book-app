@@ -9,6 +9,7 @@ import { NovelsComponent } from './novels/novels.component';
 import { AnthologiesComponent } from './anthologies/anthologies.component';
 import { LibraryComponent } from './library/library.component';
 import { BookService } from './shared/book.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BookService } from './shared/book.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]
