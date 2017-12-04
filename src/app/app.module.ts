@@ -10,6 +10,7 @@ import { AnthologiesComponent } from './anthologies/anthologies.component';
 import { LibraryComponent } from './library/library.component';
 import { BookService } from './shared/book.service';
 import { AppRoutingModule } from './app-routing.module';
+import { SubstringPipe } from './substring.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
     StartComponent,
     NovelsComponent,
     AnthologiesComponent,
-    LibraryComponent
+    LibraryComponent,
+    SubstringPipe
   ],
   imports: [
     BrowserModule,
