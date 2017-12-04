@@ -1,3 +1,28 @@
-<p>
-  library works!
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Publisher</th>
+      <th>Length</th>
+      <th>Additional Info</th>
+      <th>ISBN</th>
+      <th>Review</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td></td>
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.year}} ({{book.publisher}})</td>
+      <td>{{book.pages}}</td>
+      <td></td>
+      <td>{{book.isbn}}</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
