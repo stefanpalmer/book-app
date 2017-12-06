@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { BookService } from '../shared/book.service';
+import { Book } from '../shared/book.model';
 
 @Component({
   selector: 'app-anthologies',
@@ -17,6 +18,16 @@ export class AnthologiesComponent implements OnInit {
   }
 
   onSubmit() {
+  /*  const newBook = new Book(
+      this.anthologyForm.value['title'],
+      this.anthologyForm.value['editor'],
+      this.anthologyForm.value['publisher'],
+      this.anthologyForm.value['year'],
+      this.anthologyForm.value['pages'],
+      this.anthologyForm.value['stories'],
+      this.anthologyForm.value['isbn'],
+      this.anthologyForm.value['review']
+    ) ; */
     this.bookService.addBook(this.anthologyForm.value);
   }
 
@@ -32,7 +43,7 @@ export class AnthologiesComponent implements OnInit {
 
   private initForm() {
     let anthologyTitle = '';
-    let anthologyEditor = '';
+    let anthologyAuthor = '';
     let anthologyPublisher = '';
     let anthologyYear = null;
     let anthologyPages = null;
@@ -42,7 +53,7 @@ export class AnthologiesComponent implements OnInit {
 
     this.anthologyForm = new FormGroup({
       'title': new FormControl(anthologyTitle),
-      'editor': new FormControl(anthologyEditor),
+      'author': new FormControl(anthologyAuthor),
       'publisher': new FormControl(anthologyPublisher),
       'year': new FormControl(anthologyYear),
       'pages': new FormControl(anthologyPages),
