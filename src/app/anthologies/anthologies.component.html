@@ -1,3 +1,74 @@
-<p>
-  anthologies works!
-</p>
+<form [formGroup]="anthologyForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-xs-5 form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" class="form-control" formContolName="title">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5 form-group">
+      <label for="editor">Editor</label>
+      <input type="text" id="editor" class="form-control" formContolName="editor">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5 form-group">
+      <label for="publisher">Publisher</label>
+      <input type="text" id="publisher" class="form-control" formContolName="publisher">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5 form-group">
+      <label for="year">Year</label>
+      <input type="number" id="year" class="form-control" formContolName="year">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5 form-group">
+      <label for="pages">Pages</label>
+      <input type="number" id="pages" class="form-control" formContolName="pages">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-9" formArrayName="stories">
+      <div class="row"
+        *ngFor="let story of anthologyForm.get('stories').controls; let i = index"
+        [formGroupName]="i">
+        <div class="col-xs-3">
+          <label for="storyTitle">Title</label>
+          <input type="text" class="form-control" formControlName="storyTitle">
+        </div>
+        <div class="col-xs-3">
+          <label for="storyAuthor">Author</label>
+          <input type="text" class="form-control" formControlName="storyAuthor">
+        </div>
+        <div class="col-xs-2">
+          <label for="original">Original?</label>
+          <input type="text" class="form-control" formControlName="original">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-1">
+          <button class="btn btn-primary" type="button" (click)="onAddStory()">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5 form-group">
+      <label for="isbn">ISBN</label>
+      <input type="text" id="isbn" class="form-control" formContolName="isbn">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5 form-group">
+      <label for="review">Review</label>
+      <input type="text" id="review" class="form-control" formContolName="review">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5">
+      <button class="btn btn-primary" type="submit">Add</button>
+    </div>
+  </div>
+</form>
