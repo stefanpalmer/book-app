@@ -13,8 +13,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let book of books">
-      <td></td>
+    <tr *ngFor="let book of books; let id = index">
+      <td>{{id + 1}}.</td>
       <td>{{book.title}}</td>
       <td>{{book.author}}</td>
       <td>{{book.year}} ({{book.publisher}})</td>
@@ -22,7 +22,7 @@
       <td></td>
       <td>{{book.isbn}}</td>
       <td>{{book.review | substring}}</td>
-      <td></td>
+      <td><button class="btn btn-warning" [routerLink]="[id]">Edit</button></td>
     </tr>
   </tbody>
 </table>

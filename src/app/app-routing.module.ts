@@ -11,8 +11,9 @@ const appRoutes: Routes = [
   { path: 'start', component: StartComponent},
   { path: 'novel', component: NovelsComponent },
   { path: 'anthology', component: AnthologiesComponent },
-  { path: 'library', component: LibraryComponent}
-]
+  { path: 'library/:id', component: AnthologiesComponent },
+  { path: 'library', component: LibraryComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],

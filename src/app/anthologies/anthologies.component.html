@@ -67,8 +67,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-5">
-      <button class="btn btn-primary" type="submit">Add</button>
+    <div class="col-xs-1">
+      <button class="btn btn-primary" type="submit">{{ editMode ? 'Update' : 'Add'}}</button>
+    </div>
+    <div class="col-xs-1">
+      <button class="btn btn-danger" (click)="onClear()">Cancel</button>
     </div>
   </div>
 </form>

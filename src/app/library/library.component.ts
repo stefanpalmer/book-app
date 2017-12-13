@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { BookService } from '../shared/book.service';
 import { Book } from '../shared/book.model';
@@ -10,9 +11,12 @@ import { Book } from '../shared/book.model';
 })
 export class LibraryComponent implements OnInit, OnDestroy {
   books: Book[];
+  id: number;
   subscription: Subscription;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.bookService.booksChanged.subscribe(
@@ -21,6 +25,11 @@ export class LibraryComponent implements OnInit, OnDestroy {
       }
     );
     this.books = this.bookService.getBooks();
+    console.log(this.bookService.getBooks());
+  }
+
+  onEditBook() {
+    this.router.navigate(['id'], {relativeTo: this.route});
   }
 
   ngOnDestroy() {

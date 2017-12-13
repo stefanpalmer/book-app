@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { BookService } from '../shared/book.service';
 import { Book } from '../shared/book.model';
@@ -9,26 +10,36 @@ import { Book } from '../shared/book.model';
   styleUrls: ['./anthologies.component.css']
 })
 export class AnthologiesComponent implements OnInit {
+  id: number;
+  editMode = false;
   anthologyForm: FormGroup;
 
-  constructor(private bookService: BookService) { }
+  constructor(private route: ActivatedRoute,
+    private bookService: BookService,
+    private router: Router) { }
 
   ngOnInit() {
-    this.initForm();
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.editMode = params['id'] != null;
+        this.initForm();
+      }
+    );
   }
 
   onSubmit() {
-  /*  const newBook = new Book(
-      this.anthologyForm.value['title'],
-      this.anthologyForm.value['editor'],
-      this.anthologyForm.value['publisher'],
-      this.anthologyForm.value['year'],
-      this.anthologyForm.value['pages'],
-      this.anthologyForm.value['stories'],
-      this.anthologyForm.value['isbn'],
-      this.anthologyForm.value['review']
-    ) ; */
-    this.bookService.addBook(this.anthologyForm.value);
+    if (this.editMode) {
+      this.bookService.updateBook(this.id, this.anthologyForm.value);
+      this.router.navigate(['../'], {relativeTo: this.route});
+    } else {
+      this.bookService.addBook(this.anthologyForm.value);
+      this.router.navigate(['../library']);
+    }
+  }
+
+  onClear() {
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   onAddStory() {
@@ -50,6 +61,28 @@ export class AnthologiesComponent implements OnInit {
     let anthologyStories = new FormArray([]);
     let anthologyIsbn = '';
     let anthologyReview = '';
+
+    if (this.editMode) {
+      const book = this.bookService.getBook(this.id);
+      anthologyTitle = book.title;
+      anthologyAuthor = book.author;
+      anthologyPublisher = book.publisher;
+      anthologyYear = book.year;
+      anthologyPages = book.pages;
+      if (book['stories']) {
+        for (let story of book.stories) {
+          anthologyStories.push(
+            new FormGroup({
+              'storyTitle': new FormControl(story.title),
+              'storyAuthor': new FormControl(story.author),
+              'original': new FormControl(story.original)
+            })
+          )
+        }
+      }
+      anthologyIsbn = book.isbn;
+      anthologyReview = book.review;
+    }
 
     this.anthologyForm = new FormGroup({
       'title': new FormControl(anthologyTitle),
