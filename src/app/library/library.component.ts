@@ -32,6 +32,12 @@ export class LibraryComponent implements OnInit, OnDestroy {
     this.router.navigate(['id'], {relativeTo: this.route});
   }
 
+  onDeleteBook(id: number) {
+    if (confirm('Are you sure you want to delete this book entry?')) {
+      this.bookService.deleteBook(id);
+    }
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

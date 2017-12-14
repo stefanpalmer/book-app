@@ -22,7 +22,16 @@
       <td></td>
       <td>{{book.isbn}}</td>
       <td>{{book.review | substring}}</td>
-      <td><button class="btn btn-warning" [routerLink]="[id]">Edit</button></td>
+      <td>
+        <div class="row">
+          <div class="col-xs-4">
+            <button class="btn btn-warning" [routerLink]="[id]">Edit</button>
+          </div>
+          <div class="col-xs-4">
+            <button class="btn btn-danger" (click)="onDeleteBook(id)">Delete</button>
+          </div>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
