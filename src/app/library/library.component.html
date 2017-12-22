@@ -25,7 +25,8 @@
       <td>
         <div class="row">
           <div class="col-xs-4">
-            <button class="btn btn-warning" [routerLink]="[id]">Edit</button>
+            <button class="btn btn-warning" *ngIf="book.stories.length > 0" [routerLink]="[id, 'edit-anthology']">Edit</button>
+            <button class="btn btn-warning" *ngIf="book.stories.length == 0" [routerLink]="[id, 'edit-novel']">Edit</button>
           </div>
           <div class="col-xs-4">
             <button class="btn btn-danger" (click)="onDeleteBook(id)">Delete</button>

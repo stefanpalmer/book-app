@@ -11,7 +11,8 @@ const appRoutes: Routes = [
   { path: 'start', component: StartComponent},
   { path: 'novel', component: NovelsComponent },
   { path: 'anthology', component: AnthologiesComponent },
-  { path: 'library/:id', component: AnthologiesComponent },
+  { path: 'library/:id/edit-novel', component: NovelsComponent },
+  { path: 'library/:id/edit-anthology', component: AnthologiesComponent },
   { path: 'library', component: LibraryComponent }
 ];
 

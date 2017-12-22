@@ -1,62 +1,65 @@
-<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+<form [formGroup]="novelsForm" (ngSubmit)="onSubmit()">
   <h2>Novel Entry</h2>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="title">Title</label>
-      <input ngModel type="text" id="title" class="form-control" name="title">
+      <input type="text" id="title" class="form-control" name="title" formControlName="title">
     </div>
   </div>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="author">Author</label>
-      <input ngModel type="text" id="author" class="form-control" name="author">
+      <input type="text" id="author" class="form-control" name="author" formControlName="author">
     </div>
   </div>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="publisher">Publisher</label>
-      <input ngModel type="text" id="publisher" class="form-control" name="publisher">
+      <input type="text" id="publisher" class="form-control" name="publisher" formControlName="publisher">
     </div>
   </div>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="year">Year</label>
-      <input ngModel type="number" id="year" class="form-control" name="year">
+      <input type="number" id="year" class="form-control" name="year" formControlName="year">
     </div>
   </div>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="pages">Pages</label>
-      <input ngModel type="number" id="pages" class="form-control" name="pages">
+      <input type="number" id="pages" class="form-control" name="pages" formControlName="pages">
     </div>
   </div>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="series">Series</label>
-      <input ngModel type="text" id="series" class="form-control" name="series">
+      <input type="text" id="series" class="form-control" name="series" formControlName="series">
     </div>
   </div>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="seriesnum">Series Number</label>
-      <input ngModel type="number" id="seriesnum" class="form-control" name="seriesnum">
+      <input type="number" id="seriesnum" class="form-control" name="seriesnum" formControlName="seriesnum">
     </div>
   </div>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="isbn">ISBN</label>
-      <input ngModel type="text" id="isbn" class="form-control" name="isbn">
+      <input type="text" id="isbn" class="form-control" name="isbn" formControlName="isbn">
     </div>
   </div>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="review">Review</label>
-      <textarea ngModel type="text" id="review" class="form-control" name="review" rows="4" cols="40"></textarea>
+      <textarea type="text" id="review" class="form-control" name="review" rows="4" cols="40" formControlName="review"></textarea>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-5">
-      <button class="btn btn-primary" type="submit">Add</button>
+    <div class="col-xs-1">
+      <button class="btn btn-primary" type="submit">{{editMode? 'Update': 'Add'}}</button>
+    </div>
+    <div class="col-xs-1">
+      <button class="btn btn-warning" (click)="onClear()">Clear</button>
     </div>
   </div>
 </form>

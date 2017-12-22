@@ -6,6 +6,7 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class BookService {
   booksChanged = new Subject<Book[]>();
+  startedEditing = new Subject<number>();
 
   private books: Book[] = [
 

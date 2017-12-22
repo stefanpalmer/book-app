@@ -10,6 +10,7 @@ import { Book } from '../shared/book.model';
   styleUrls: ['./library.component.css']
 })
 export class LibraryComponent implements OnInit, OnDestroy {
+  book: Book;
   books: Book[];
   id: number;
   subscription: Subscription;
@@ -28,8 +29,9 @@ export class LibraryComponent implements OnInit, OnDestroy {
     console.log(this.bookService.getBooks());
   }
 
-  onEditBook() {
-    this.router.navigate(['id'], {relativeTo: this.route});
+  onEditNovel(id: number) {
+    this.bookService.startedEditing.next(id);
+    this.router.navigate(['../id/edit-novel'], {relativeTo: this.route});
   }
 
   onDeleteBook(id: number) {
