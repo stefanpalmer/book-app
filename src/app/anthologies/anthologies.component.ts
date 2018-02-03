@@ -31,7 +31,7 @@ export class AnthologiesComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.bookService.updateBook(this.id, this.anthologyForm.value);
-      this.router.navigate(['../'], {relativeTo: this.route});
+      this.router.navigate(['../../'], {relativeTo: this.route});
     } else {
       this.bookService.addBook(this.anthologyForm.value);
       this.router.navigate(['../library']);
@@ -45,8 +45,8 @@ export class AnthologiesComponent implements OnInit {
   onAddStory() {
     (<FormArray>this.anthologyForm.get('stories')).push(
       new FormGroup({
-        'storyTitle': new FormControl(null),
-        'storyAuthor': new FormControl(null),
+        'title': new FormControl(null),
+        'author': new FormControl(null),
         'original': new FormControl(null)
       })
     );
@@ -73,8 +73,8 @@ export class AnthologiesComponent implements OnInit {
         for (let story of book.stories) {
           anthologyStories.push(
             new FormGroup({
-              'storyTitle': new FormControl(story.title),
-              'storyAuthor': new FormControl(story.author),
+              'title': new FormControl(story.title),
+              'author': new FormControl(story.author),
               'original': new FormControl(story.original)
             })
           )

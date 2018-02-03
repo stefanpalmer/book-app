@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { NgForm, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { BookService } from '../shared/book.service';
 import { Book } from '../shared/book.model';
@@ -19,8 +19,9 @@ export class NovelsComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private bookService: BookService,
-    private router: Router) { }
+  ) { }
 
   ngOnInit() {
     this.subscription = this.route.params.subscribe(
@@ -73,10 +74,10 @@ export class NovelsComponent implements OnInit {
     }
 
     this.novelsForm = new FormGroup({
-      'title': new FormControl(novelTitle),
-      'author': new FormControl(novelAuthor),
+      'title': new FormControl(novelTitle, Validators.required),
+      'author': new FormControl(novelAuthor, Validators.required),
       'publisher': new FormControl(novelPublisher),
-      'year': new FormControl(novelYear),
+      'year': new FormControl(novelYear, Validators.max(2018)),
       'pages': new FormControl(novelPages),
       'series': new FormControl(novelSeries),
       'seriesnum': new FormControl(novelSeriesNum),

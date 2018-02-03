@@ -19,7 +19,9 @@
       <td>{{book.author}}</td>
       <td>{{book.year}} ({{book.publisher}})</td>
       <td>{{book.pages}}</td>
-      <td></td>
+      <td *ngIf="book.stories.length == 0 && !book.series"></td>
+      <td *ngIf="book.stories.length == 0 && book.series">{{book.series}} (#{{book.seriesnum}})</td>
+      <td *ngIf="book.stories.length > 0">Consists of {{book.stories.length}} stories</td>
       <td>{{book.isbn}}</td>
       <td>{{book.review | substring}}</td>
       <td>
@@ -28,8 +30,8 @@
             <button class="btn btn-warning" *ngIf="book.stories.length > 0" [routerLink]="[id, 'edit-anthology']">Edit</button>
             <button class="btn btn-warning" *ngIf="book.stories.length == 0" [routerLink]="[id, 'edit-novel']">Edit</button>
           </div>
-          <div class="col-xs-4">
-            <button class="btn btn-danger" (click)="onDeleteBook(id)">Delete</button>
+          <div class="col-push-xs-1 col-xs-4">
+            <button class="btn btn-danger"  id="push-button" (click)="onDeleteBook(id)">Delete</button>
           </div>
         </div>
       </td>
