@@ -78,11 +78,11 @@ export class NovelsComponent implements OnInit {
       'author': new FormControl(novelAuthor, Validators.required),
       'publisher': new FormControl(novelPublisher),
       'year': new FormControl(novelYear, Validators.max(2018)),
-      'pages': new FormControl(novelPages),
+      'pages': new FormControl(novelPages, Validators.min(1)),
       'series': new FormControl(novelSeries),
       'seriesnum': new FormControl(novelSeriesNum),
       'stories': novelStories,
-      'isbn': new FormControl(novelIsbn),
+      'isbn': new FormControl(novelIsbn, Validators.pattern(/^\d{13}$/)),
       'review': new FormControl(novelReview),
     });
   }

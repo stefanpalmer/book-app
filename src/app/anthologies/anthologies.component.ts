@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { BookService } from '../shared/book.service';
 import { Book } from '../shared/book.model';
 
@@ -85,13 +85,13 @@ export class AnthologiesComponent implements OnInit {
     }
 
     this.anthologyForm = new FormGroup({
-      'title': new FormControl(anthologyTitle),
-      'author': new FormControl(anthologyAuthor),
+      'title': new FormControl(anthologyTitle, Validators.required),
+      'author': new FormControl(anthologyAuthor, Validators.required),
       'publisher': new FormControl(anthologyPublisher),
-      'year': new FormControl(anthologyYear),
-      'pages': new FormControl(anthologyPages),
+      'year': new FormControl(anthologyYear, Validators.max(2018)),
+      'pages': new FormControl(anthologyPages, Validators.min(1)),
       'stories': anthologyStories,
-      'isbn': new FormControl(anthologyIsbn),
+      'isbn': new FormControl(anthologyIsbn, Validators.pattern(/^\d{13}$/)),
       'review': new FormControl(anthologyReview),
     });
   }

@@ -1,14 +1,17 @@
 <form [formGroup]="anthologyForm" (ngSubmit)="onSubmit()">
+  <h2>Anthology Entry</h2>
   <div class="row">
     <div class="col-xs-5 form-group">
       <label for="title">Title</label>
       <input type="text" id="title" class="form-control" formControlName="title">
+      <div *ngIf="anthologyForm.get('title').touched && anthologyForm.get('title').invalid"
+      class="alert alert-danger">Title is required.</div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-5 form-group">
+    <div class="col-xs-5 col-xs-push-1 form-group">
       <label for="editor">Editor</label>
       <input type="text" id="editor" class="form-control" formControlName="author">
+      <div *ngIf="anthologyForm.get('author').touched && anthologyForm.get('author').invalid"
+      class="alert alert-danger">Editor is required.</div>
     </div>
   </div>
   <div class="row">
@@ -16,54 +19,55 @@
       <label for="publisher">Publisher</label>
       <input type="text" id="publisher" class="form-control" formControlName="publisher">
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-5 form-group">
+    <div class="col-xs-2 col-xs-push-1 form-group">
       <label for="year">Year</label>
       <input type="number" id="year" class="form-control" formControlName="year">
+      <div *ngIf="anthologyForm.get('year').touched && anthologyForm.get('year').invalid"
+      class="alert alert-danger">Cannot be later than current year.</div>
+    </div>
+    <div class="col-xs-1 col-xs-push-1 form-group">
+      <label for="pages">Pages</label>
+      <input type="number" id="pages" class="form-control" formControlName="pages">
+      <div *ngIf="anthologyForm.get('pages').touched && anthologyForm.get('pages').invalid"
+      class="alert alert-danger">Must be a positive number.</div>
+    </div>
+    <div class="col-xs-2 col-xs-push-1 form-group">
+      <label for="isbn">ISBN</label>
+      <input type="text" id="isbn" class="form-control" formControlName="isbn">
+      <div *ngIf="anthologyForm.get('isbn').touched && anthologyForm.get('isbn').invalid"
+      class="alert alert-danger">Must be a 13 digit number.</div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-5 form-group">
-      <label for="pages">Pages</label>
-      <input type="number" id="pages" class="form-control" formControlName="pages">
+    <div class="col-xs-1">
+      <h4><strong>Stories</strong></h4>
+    </div>
+    <div class="col-xs-1">
+      <button class="btn btn-primary" type="button" (click)="onAddStory()">+</button>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-9" formArrayName="stories">
-      <div class="row"
-        *ngFor="let story of anthologyForm.get('stories').controls; let i = index"
-        [formGroupName]="i">
-        <div class="col-xs-3">
-          <label for="storyTitle">Title</label>
-          <input type="text" class="form-control" formControlName="title">
+      <div class="row" *ngFor="let story of anthologyForm.get('stories').controls; let i = index" [formGroupName]="i">
+        <div class="col-xs-4 form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" formControlName="title">
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-4 form-group">
           <label for="storyAuthor">Author</label>
           <input type="text" class="form-control" formControlName="author">
         </div>
-        <div class="col-xs-2">
-          <label for="original">Original?</label>
-          <input type="text" class="form-control" formControlName="original">
-        </div>
-      </div>
-      <div class="row">
         <div class="col-xs-1">
-          <button class="btn btn-primary" type="button" (click)="onAddStory()">+</button>
+          <label for="original">Original?</label>
+          <input type="checkbox" class="form-control" id="original" formControlName="original">
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-5 form-group">
-      <label for="isbn">ISBN</label>
-      <input type="text" id="isbn" class="form-control" formControlName="isbn">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-5 form-group">
+    <div class="col-xs-11 form-group">
       <label for="review">Review</label>
-      <input type="text" id="review" class="form-control" formControlName="review">
+      <textarea type="text" id="review" class="form-control" rows="3" formControlName="review"></textarea>
     </div>
   </div>
   <div class="row">
