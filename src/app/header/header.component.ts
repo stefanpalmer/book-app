@@ -6,6 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  toggleMenu = false;
+
+  onToggleMenu() {
+    if (this.toggleMenu === true) {
+      this.toggleMenu = false;
+    } else {
+      this.toggleMenu = true;
+    }
+  }
 
   constructor() { }
 
