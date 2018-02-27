@@ -55,11 +55,15 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-1 col-xs-2">
-      <button class="btn btn-primary" type="submit">{{editMode? 'Update': 'Add'}}</button>
+    <div *ngIf="!editMode" class="col-sm-1 col-xs-2">
+      <button class="btn btn-primary" type="submit" [disabled]=!novelsForm.valid>Add</button>
+    </div>
+    <div *ngIf="editMode" class="col-md-1 col-sm-2 col-xs-3">
+      <button class="btn btn-primary" type="submit" [disabled]=!novelsForm.valid>Update</button>
     </div>
     <div class="col-sm-1 col-xs-2">
-      <button class="btn btn-warning" (click)="onClear()">Clear</button>
+      <button *ngIf="!editMode" class="btn btn-warning" (click)="onCancelNew()">Cancel</button>
+      <button *ngIf="editMode" class="btn btn-warning" (click)="onCancelEdit()">Cancel</button>
     </div>
   </div>
 </form>

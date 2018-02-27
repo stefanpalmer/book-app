@@ -4,12 +4,14 @@
     <div class="col-sm-5 form-group">
       <label for="title">Title</label>
       <input type="text" id="title" class="form-control" formControlName="title">
-      <div *ngIf="anthologyForm.get('title').touched && anthologyForm.get('title').invalid" class="alert alert-danger">Title is required.</div>
+      <div *ngIf="anthologyForm.get('title').touched && anthologyForm.get('title').invalid"
+      class="alert alert-danger">Title is required.</div>
     </div>
     <div class="col-sm-5 col-sm-push-1 form-group">
       <label for="editor">Editor</label>
       <input type="text" id="editor" class="form-control" formControlName="author">
-      <div *ngIf="anthologyForm.get('author').touched && anthologyForm.get('author').invalid" class="alert alert-danger">Editor is required.</div>
+      <div *ngIf="anthologyForm.get('author').touched && anthologyForm.get('author').invalid"
+      class="alert alert-danger">Editor is required.</div>
     </div>
   </div>
   <div class="row">
@@ -20,19 +22,22 @@
     <div class="col-sm-2 col-xs-6 col-sm-push-1 form-group">
       <label for="year">Year</label>
       <input type="number" id="year" class="form-control" formControlName="year">
-      <div *ngIf="anthologyForm.get('year').touched && anthologyForm.get('year').invalid" class="alert alert-danger">Cannot be later than current year.</div>
+      <div *ngIf="anthologyForm.get('year').touched && anthologyForm.get('year').invalid"
+      class="alert alert-danger">Cannot be later than current year.</div>
     </div>
     <div class="col-sm-2 col-xs-6 col-sm-push-2 form-group">
       <label for="pages">Pages</label>
       <input type="number" id="pages" class="form-control" formControlName="pages">
-      <div *ngIf="anthologyForm.get('pages').touched && anthologyForm.get('pages').invalid" class="alert alert-danger">Must be a positive number.</div>
+      <div *ngIf="anthologyForm.get('pages').touched && anthologyForm.get('pages').invalid"
+      class="alert alert-danger">Must be a positive number.</div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-5 form-group">
       <label for="isbn">ISBN</label>
       <input type="text" id="isbn" class="form-control" formControlName="isbn">
-      <div *ngIf="anthologyForm.get('isbn').touched && anthologyForm.get('isbn').invalid" class="alert alert-danger">Must be a 13 digit number.</div>
+      <div *ngIf="anthologyForm.get('isbn').touched && anthologyForm.get('isbn').invalid"
+      class="alert alert-danger">Must be a 13 digit number.</div>
     </div>
   </div>
   <div class="row">
@@ -68,11 +73,15 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-1 col-xs-2">
-      <button class="btn btn-primary" type="submit">{{ editMode ? 'Update' : 'Add'}}</button>
+    <div *ngIf="!editMode" class="col-sm-1 col-xs-2">
+      <button class="btn btn-primary" type="submit" [disabled]=!anthologyForm.valid>Add</button>
+    </div>
+    <div *ngIf="editMode" class="col-md-1 col-sm-2 col-xs-3">
+      <button class="btn btn-primary" type="submit" [disabled]=!anthologyForm.valid>Update</button>
     </div>
     <div class="col-sm-1 col-xs-2">
-      <button class="btn btn-warning" (click)="onClear()">Cancel</button>
+      <button *ngIf="!editMode" class="btn btn-warning" (click)="onCancelNew()">Cancel</button>
+      <button *ngIf="editMode" class="btn btn-warning" (click)="onCancelEdit()">Cancel</button>
     </div>
   </div>
 </form>

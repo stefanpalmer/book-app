@@ -1,6 +1,10 @@
 .margins {
   margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.btn {
+  margin-bottom: 20px;
 }
 
 #original {

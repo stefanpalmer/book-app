@@ -38,7 +38,11 @@ export class AnthologiesComponent implements OnInit {
     }
   }
 
-  onClear() {
+  onCancelNew(){
+    this.router.navigate(['../'], {relativeTo: this.route});
+  }
+
+  onCancelEdit() {
     this.router.navigate(['../../'], {relativeTo: this.route});
   }
 

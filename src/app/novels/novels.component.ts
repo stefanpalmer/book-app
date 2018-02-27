@@ -10,13 +10,13 @@ import { Book } from '../shared/book.model';
   templateUrl: './novels.component.html',
   styleUrls: ['./novels.component.css']
 })
+
 export class NovelsComponent implements OnInit {
   subscription: Subscription;
   editedBook: Book;
   editedNumberIndex: number;
   editMode = false;
   novelsForm: FormGroup;
-
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -43,7 +43,11 @@ export class NovelsComponent implements OnInit {
     }
   }
 
-  onClear() {
+  onCancelNew() {
+    this.router.navigate(['../'], {relativeTo: this.route});
+  }
+  
+  onCancelEdit() {
     this.router.navigate(['../../'], {relativeTo: this.route});
   }
 

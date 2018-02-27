@@ -23,7 +23,7 @@ import { SubstringPipe } from './substring.pipe';
     NovelsComponent,
     AnthologiesComponent,
     LibraryComponent,
-    SubstringPipe
+    SubstringPipe,
   ],
   imports: [
     BrowserModule,

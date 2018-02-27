@@ -19,7 +19,7 @@ export class BookService {
       'Forever War Series',
       1,
       [],
-      '978-0312536633',
+      '9780312536633',
       'After this third or fourth read, this is still as fabulous a story as it was the first time I read it many years ago.'
     ),
 
@@ -32,18 +32,18 @@ export class BookService {
       '',
       null,
       [
-        new Story('Walter M. Miller', 'The Will', false),
-        new Story('Walter M. Miller', 'Anybody Else Like Me?', false),
-        new Story('Walter M. Miller', 'Crucifixus Ethiam', false),
-        new Story('Walter M. Miller', 'I', false),
-        new Story('Walter M. Miller', 'Dreamer', false),
-        new Story('Walter M. Miller', 'Dumb Waiter', false),
-        new Story('Walter M. Miller', 'Blood Bank', false),
-        new Story('Walter M. Miller', 'Big Joe and the Nth Generation', false),
-        new Story('Walter M. Miller', 'The Big Hunger', false),
-        new Story('Walter M. Miller', 'Conditionally Human', false),
+        new Story('The Will', 'Walter M. Miller', false),
+        new Story('Anybody Else Like Me?', 'Walter M. Miller', false),
+        new Story('Crucifixus Ethiam', 'Walter M. Miller', false),
+        new Story('I', 'Walter M. Miller', false),
+        new Story('Dreamer', 'Walter M. Miller', false),
+        new Story('Dumb Waiter', 'Walter M. Miller', false),
+        new Story('Blood Bank', 'Walter M. Miller', false),
+        new Story('Big Joe and the Nth Generation', 'Walter M. Miller', false),
+        new Story('The Big Hunger', 'Walter M. Miller', false),
+        new Story('Conditionally Human', 'Walter M. Miller', false),
       ],
-      '978-0575079779',
+      '9780575079779',
       "Walter Miller's fiction has long been a favorite of mine. A Canticle for Leibowitz is not just one of my favorite science fiction novels, but one of my favorite novels altogether."
     ),
 
@@ -56,7 +56,7 @@ export class BookService {
       'Hainish Cycle',
       6,
       [],
-      '978-0441478125',
+      '9780441478125',
       'This book is a classic so there is really nothing I can say that others have not already said, and better. It is science fiction that addresses the social consequences of contact between people from different planets rather than fixating on technology and the things that can go wrong.'
     ),
 
@@ -69,7 +69,7 @@ export class BookService {
       '',
       null,
       [],
-      '978-0486290270',
+      '9780486290270',
       "The mad scientist has been with us since the early 1800s. And while H.G. Wells didn't create the mad scientist stereotype, he certainly gave it a boost in his harrowing novella beast-men forced to live like humans, a crazy scientist carrying out mad plans, and a bland Englishman stuck in the middle of it."
     )
 

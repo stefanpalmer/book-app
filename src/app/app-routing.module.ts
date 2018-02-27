@@ -8,7 +8,7 @@ import { LibraryComponent } from './library/library.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/start', pathMatch: 'full' },
-  { path: 'start', component: StartComponent},
+  { path: 'start', component: StartComponent },
   { path: 'novel', component: NovelsComponent },
   { path: 'anthology', component: AnthologiesComponent },
   { path: 'library/:id/edit-novel', component: NovelsComponent },
