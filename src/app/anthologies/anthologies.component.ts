@@ -56,6 +56,10 @@ export class AnthologiesComponent implements OnInit {
     );
   }
 
+  onDeleteStory(index: number) {
+    (<FormArray>this.anthologyForm.get('stories')).removeAt(index);
+  }
+
   private initForm() {
     let anthologyTitle = '';
     let anthologyAuthor = '';

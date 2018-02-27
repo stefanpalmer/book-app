@@ -3,8 +3,12 @@
   margin-bottom: 15px;
 }
 
-.btn {
+.btn-primary, .btn-warning {
   margin-bottom: 20px;
+}
+
+.btn-danger {
+  margin-bottom: -50px;
 }
 
 #original {
